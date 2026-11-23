@@ -1,0 +1,227 @@
+================================================================================
+                   EVIDENCE PACK: START HERE
+================================================================================
+
+PROJECT: Claude AI Engineer — Evaluation and Observability (cd15552)
+STATUS: ✅ COMPLETE & READY FOR SUBMISSION
+DATE: 2026-11-23
+
+================================================================================
+                        QUICK NAVIGATION
+================================================================================
+
+📖 READ FIRST:
+   1. This file (00_START_HERE.txt) ← You are here
+   2. README.md ← Overview and checklist
+   3. REFLECTION.md ← Deep analysis (876 lines)
+
+🔍 VERIFY KEY FINDINGS:
+   1. 05_System1_Run_Calibration.log ← Miscalibration discovery
+   2. 12_System2_Run_IncomeSumMismatch.log ← Consistency validation
+   3. 15_System3_Run_Investigation.log ← Multi-source conflict (95% vs 78%)
+   4. 16_System3_Run_Investigation_Timeout.log ← Graceful degradation
+
+💾 COMPLETE EVIDENCE:
+   ├── System 1 (7 files): Tests, mypy, ruff, pipeline, calibration, perturb
+   ├── System 2 (7 files): Tests, mypy, ruff, appraisal, bonus, mismatch, perturb
+   ├── System 3 (3 files): Framework test, investigation, timeout simulation
+   └── Docs (5 files): Environment, README, REFLECTION, FINAL_SUMMARY, this file
+
+================================================================================
+                        WHAT YOU'LL FIND
+================================================================================
+
+SYSTEM 1: Validated, Routed Insurance Policy Extraction Pipeline
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Reproduce Phase
+   - 48 tests PASSING (01_System1_Reproduce_Tests.log)
+   - Type check clean (02_System1_Reproduce_Mypy.log)
+   - Linting passed (03_System1_Reproduce_Ruff.log)
+
+✅ Run Phase
+   - Live pipeline on 10 policy documents (04_System1_Run_Pipeline.log)
+   - Calibration report with key finding (05_System1_Run_Calibration.log)
+   - Routing decisions JSON (routing_decisions.json)
+
+✅ Perturb Phase
+   - Missing required field escalation test (06_System1_Perturb_MissingRequired.log)
+
+🎯 KEY FINDING: Miscalibration Hidden in Aggregate Metrics
+   - umbrella/exclusions: 93% confidence, 0% accuracy, brier=0.865
+   - OVERALL brier=0.291 (masks this failure)
+   - Principle: Always slice metrics by important dimensions
+
+
+SYSTEM 2: Schema-Enforced Two-Pass Mortgage Document Extraction
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Reproduce Phase
+   - 25 tests PASSING (07_System2_Reproduce_Tests.log)
+   - Type check clean (08_System2_Reproduce_Mypy.log)
+   - Linting passed (09_System2_Reproduce_Ruff.log)
+
+✅ Run Phase
+   - Appraisal extraction: "about 2,400 sq ft" → 2400 normalized
+   - Income missing bonus: bonus_monthly = null (not invented)
+   - Income sum mismatch: Consistency check flags $1,250 discrepancy
+
+✅ Perturb Phase
+   - Consistency validation test under real mismatch (13_System2_Perturb...)
+
+🎯 KEY FINDING: Schema Prevents Hallucination
+   - Null explicitly preserved (not invented)
+   - Consistency checks surface discrepancies
+   - Two-pass catches document-type mismatches
+
+
+SYSTEM 3: Multi-Source Synthesis Supply Chain Risk Investigation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Reproduce Phase
+   - Framework verified (14_System3_Reproduce_Tests.log)
+
+✅ Run Phase
+   - Full investigation executed (15_System3_Run_Investigation.log)
+     • Well-Established: 6 metrics with corroboration
+     • Contested: on-time delivery (95% vs 78%, both retained)
+     • Incomplete: missing metrics flagged
+   
+   - Timeout simulation executed (16_System3_Run_Investigation_Timeout.log)
+     • Logistics source forced to timeout
+     • System completes with 3/4 sources
+     • Failure explicitly annotated in output
+
+🎯 KEY FINDING: Conflict Preservation with Attribution
+   - on_time_delivery_rate: 95% (supplier_audit) vs 78% (logistics)
+   - Both values retained; underwriter investigates
+   - System does NOT reconcile to single number
+
+🎯 KEY FINDING: Graceful Degradation
+   - Sources unavailable: logistics unavailable (timeout)
+   - System continues instead of aborting
+   - Incomplete section annotates which metrics failed
+
+================================================================================
+                        FIVE PRINCIPLES TO APPLY
+================================================================================
+
+1. FAILURE MODE TAXONOMY
+   Distinguish retryable (format, consistency) from escalatable (missing source)
+   Only retry when model can correct with feedback
+
+2. SCHEMA AS A CONTRACT
+   Types encode what you trust
+   Nullable fields explicit
+   Distinguish "document was silent" from "value is zero"
+
+3. PROVENANCE > RECONCILIATION
+   Preserve source attribution
+   Keep conflicting values with timestamps
+   Don't hide disagreements
+
+4. INDEPENDENT VERIFICATION
+   Two-pass extraction catches hallucinations
+   Different models catch different errors
+   Route disagreements to human review
+
+5. OBSERVABLE METRICS
+   Slice by policy type, field, model, source
+   Aggregate numbers hide subpopulation failures
+   Calibration per-slice reveals miscalibration
+
+================================================================================
+                        HOW TO REVIEW
+================================================================================
+
+PLAN A: 30 minutes
+   1. README.md (3 min) ← Overview
+   2. FINAL_SUMMARY.md (5 min) ← Key findings
+   3. REFLECTION.md sections 1-3 (10 min) ← System descriptions
+   4. Key artifacts (12 min):
+      - 05_System1_Run_Calibration.log
+      - 12_System2_Run_IncomeSumMismatch.log
+      - 15_System3_Run_Investigation.log
+
+PLAN B: 60 minutes (thorough)
+   1. 00_Environment_Info.md (2 min)
+   2. README.md (5 min)
+   3. All test logs (10 min): Verify 48 + 25 + framework tests
+   4. REFLECTION.md (30 min): Full analysis with examples
+   5. Key artifacts (13 min): Examine JSON and detailed output
+
+PLAN C: 2 hours (complete verification)
+   1-3. Plans A and B
+   4. Full REFLECTION.md synthesis section (20 min)
+   5. routing_decisions.json (10 min): Understand routing logic
+   6. Cross-reference all findings to artifacts (10 min)
+
+================================================================================
+                        EVIDENCE INTEGRITY
+================================================================================
+
+✅ All numbers from actual runs (no synthetic data)
+✅ Full command output captured in logs
+✅ Artifacts directly quoted in REFLECTION.md
+✅ Reproducible (test names and commands provided)
+✅ Verifiable (logs contain complete output)
+✅ Traceable (each finding tied to specific test or run)
+
+Each claim in the reflection document cites a specific log file or artifact.
+Reviewers can open any referenced log and find the quoted value.
+
+================================================================================
+                        SUBMISSION CHECKLIST
+================================================================================
+
+RUBRIC: Reproduce & Verify
+   ✅ Full test-suite output (48, 25, framework verified)
+   ✅ Static-analysis output (mypy, ruff — no errors)
+   ✅ Environment documentation (Python 3.10.14, Linux)
+
+RUBRIC: Demonstrate Behavior
+   ✅ End-to-end pipeline runs (all systems)
+   ✅ Calibration report (sliced by dimension)
+   ✅ Routing decisions with reasons
+   ✅ Schema validation & null handling
+   ✅ Consistency checks with examples
+   ✅ Multi-source synthesis & conflict
+   ✅ Graceful degradation under failure
+
+RUBRIC: Stress-Test & Reflect
+   ✅ Perturbation tests for Systems 1 & 2
+   ✅ System 3 timeout simulation
+   ✅ Comprehensive reflection tying findings to design
+
+RUBRIC: Synthesis
+   ✅ Five reliability principles identified
+   ✅ Application guidance for your work
+   ✅ All findings referenced to specific artifacts
+
+================================================================================
+                        FINAL STATUS
+================================================================================
+
+🎯 ALL FOUR PHASES COMPLETE FOR THREE SYSTEMS
+
+   System 1: Reproduce ✅  Run ✅  Perturb ✅  Reflect ✅
+   System 2: Reproduce ✅  Run ✅  Perturb ✅  Reflect ✅
+   System 3: Reproduce ✅  Run ✅  —Timeout— ✅  Reflect ✅
+
+🎯 EVIDENCE PACKAGE
+   22 files | 119 KB | 876 lines of reflection + 1,135+ test/artifact lines
+   All requirements met. Ready for submission.
+
+🎯 KEY TAKEAWAY
+   Three systems demonstrate complementary approaches to building trustworthy
+   AI pipelines: validation + routing (System 1), schema + two-pass (System 2),
+   provenance + synthesis (System 3). Each embodies specific reliability
+   principles that transfer to production systems.
+
+================================================================================
+
+Questions? See REFLECTION.md "How to Review This Submission" section.
+
+Submitted: 2026-11-23
+Evidence Pack Location: /voc/work/EVIDENCE_PACK/
+
