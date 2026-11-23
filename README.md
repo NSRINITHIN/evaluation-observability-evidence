@@ -429,7 +429,5 @@ This repository demonstrates **three complementary approaches to building trustw
 
 ---
 
-**Repository**: https://github.com/NSRINITHIN/evaluation-observability-evidence  
-**Branch**: main  
-**Status**: ✅ Ready for review
+
 
